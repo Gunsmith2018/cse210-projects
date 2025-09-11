@@ -11,11 +11,19 @@ public class Prompts
 
 
 
-
-    public Prompts(string[] prompts)
+    public Prompts() {}
+    public Prompts(string[] prompts)// Constructor to initialize with custom prompts
     {
         _prompts = prompts;
     }
+
+    public string GetRandomPrompt()// Random Prompt Generator
+    {
+        Random rand = new Random();
+        int index = rand.Next(_prompts.Length);
+        return _prompts[index];
+    }
+
 
 
 }
