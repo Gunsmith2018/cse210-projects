@@ -9,9 +9,10 @@ public class Prompts
         "What’s a challenge you overcame recently?"
     };
 
-
-
-    public Prompts() {}
+    public Prompts()
+    {
+        // Default constructor
+    }
     public Prompts(string[] prompts)// Constructor to initialize with custom prompts
     {
         _prompts = prompts;
