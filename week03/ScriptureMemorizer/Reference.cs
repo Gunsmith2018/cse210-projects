@@ -22,6 +22,7 @@ class Reference
         StartVerse = startVerse;
         EndVerse = endVerse;
     }
+    
 
     public string GetDisplayText()
     {

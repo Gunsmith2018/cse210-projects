@@ -1,5 +1,6 @@
-using System.Globalization;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Scripture
 {
@@ -13,7 +14,7 @@ class Scripture
         _words = text.Split(' ').Select(word => new Word(word)).ToList();
     }
 
-      public void HideRandomWords(int count)
+    public void HideRandomWords(int count)
     {
         var visibleWords = _words.Where(w => !w.IsHidden).ToList();
         if (visibleWords.Count == 0) return;
@@ -26,13 +27,14 @@ class Scripture
         }
     }
 
-
     public string GetDisplayText()
     {
         string text = string.Join(" ", _words.Select(w => w.GetDisplayText()));
         return $"{_reference.GetDisplayText()} {text}";
     }
-    public bool IscompletelyHidden() {
+    
+    public bool IsCompletelyHidden() 
+    {
         return _words.All(w => w.IsHidden);
     }
 }
