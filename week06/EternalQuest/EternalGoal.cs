@@ -4,16 +4,16 @@ public class EternalGoal : Goal
     {
 
     }
-    public void RecordEvent()
+    public override int RecordEvent()
     {
         Console.WriteLine($"Great job! You completed '{_shortName}' and earned {_points} points!");
-        return _points; 
+        return _points;
     }
-    public bool IsComplete()
+    public override bool IsComplete()
     {
         return false;
     }
-    public string GetStringRRepresentation()
+    public override string GetStringRepresentation()
     {
         return $"EternalGoal|{_shortName}|{_description}|{_points}";
     }
