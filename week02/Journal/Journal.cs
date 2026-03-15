@@ -4,7 +4,7 @@ public class Journal
 
     public string _entries;
 
-    public Journal(string Entry)
+    public Journal(string Entry) // Constructor
     {
         _entries = Entry;
     }
@@ -16,10 +16,10 @@ public class Journal
         Console.WriteLine("Do you want a prompt or no? (yes/no)");
         string choice = Console.ReadLine().ToLower();
 
-        if(choice == "yes")
+        if(choice == "yes") // sees if the user wants a prompt or not
         {
             Console.WriteLine($"You have selected {choice}. A prompt will appear in 3 seconds.");
-            for( int i =0; i<3; i++)
+            for( int i =0; i<3; i++) // Simulates loading for 3 
             {
                 Console.Write(".");
                 Thread.Sleep(1000);
@@ -30,10 +30,10 @@ public class Journal
         else
         {
             Console.WriteLine($"You typed {choice.ToUpper()} for a prompt.");
-            for (int i =0; i<3; i++) // This for loop is a time pause
+            for (int i =0; i<3; i++) // Simulates loading for 3
             {
                 Console.Write(".");
-                Thread.Sleep(1000); // pauses for 3 seconds.
+                Thread.Sleep(1000); // Adjust this for longer or shorter waiting. 
             }
             Console.WriteLine("Please type your entry: ");
             Console.WriteLine("");
