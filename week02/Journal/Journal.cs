@@ -2,35 +2,72 @@ using System.IO;
 public class Journal
 {
 
-    public List<string> _entries = new List<string>();
+    public string _entries;
 
-    public Journal(List<string> Entry)
+    public Journal(string Entry)
     {
         _entries = Entry;
     }
 
     public void AddEntry(Entry newEntry)
     {
+        // This function is going to need a while loop with a quit key.
+        // This function will need to grab from the prompt class so the user can think on what to type
+        Console.WriteLine("Do you want a prompt or no? (yes/no)");
+        string choice = Console.ReadLine().ToLower();
 
+        if(choice == "yes")
+        {
+            Console.WriteLine($"You have selected {choice}. A prompt will appear in 3 seconds.");
+            for( int i =0; i<3; i++)
+            {
+                Console.Write(".");
+                Thread.Sleep(1000);
+            }
+            string prompt = PromptGenerator.GetRandomPrompt();
+            Console.WriteLine(prompt);
+        }
+        else
+        {
+            Console.WriteLine($"You typed {choice.ToUpper()} for a prompt.");
+            for (int i =0; i<3; i++) // This for loop is a time pause
+            {
+                Console.Write(".");
+                Thread.Sleep(1000); // pauses for 3 seconds.
+            }
+            Console.WriteLine("Please type your entry: ");
+            Console.WriteLine("");
+            string input = Console.ReadLine();
+            _entries = input;
+
+        }
     }
     public void SaveToFile(string file)
     {
-        Console.WriteLine(" Entry: ");
-        _entries = Console.ReadLine();
+
+        using (StreamWriter outputFile = new StreamWriter(file))
+        {
+            outputFile.WriteLine(_entries);
+
+        }
     }
     public void LoadFromFile(string file)
     {
-        if (File.Exists("Journal.txt"))
+        if (File.Exists(file))
         {
-            string[] lines = File.ReadAllLines("Journal.txt"); // loading(reads) in Journal.txt           
-            foreach (string ln in lines)
-                Console.WriteLine(ln);
+            Console.WriteLine("FILE FOUND");
+
+            _entries = File.ReadAllText(file);
+        }
+        else
+        {
+            Console.WriteLine("Sorry, File does not exist.");
         }
 
     }
 
     public void DisplayAll()
     {
-
+        Console.WriteLine(_entries);
     }
 }
