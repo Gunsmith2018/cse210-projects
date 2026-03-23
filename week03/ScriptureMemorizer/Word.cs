@@ -8,20 +8,27 @@ public class Word
         _text = Text;
     }
 
-    public void Hide()
+    public void Hide() // Indirectly a setter
     {
         _isHidden = true; // switches from false to true
     }
-    public void Show()
+    public void Show()// Indirectly a setter
     {
         _isHidden = false;
     }
-    public bool IsHidden()
+    public bool IsHidden()// Indirectly a Getter
     {
         return _isHidden;
     }
     public string GetDisplayText()
     {
-        
+        if (_isHidden)
+        {
+            return "_";
+        }
+        else
+        {
+            return _text;
+        }
     }
 }
