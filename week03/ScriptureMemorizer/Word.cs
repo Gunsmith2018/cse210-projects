@@ -24,11 +24,15 @@ public class Word
     {
         if (_isHidden)
         {
-            return "_";
+            return new string( '_', _text.Length);
         }
         else
         {
             return _text;
         }
+    }
+    public string GetOriginalText()
+    {
+        return _text; 
     }
 }

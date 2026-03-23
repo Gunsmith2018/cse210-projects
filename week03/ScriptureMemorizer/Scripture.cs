@@ -1,39 +1,41 @@
+using System.Linq;
 public class Scripture
 {
     private Reference _reference;
     private List<Word> _words = new List<Word>();
 
-public Scripture() // default contructor
+    public Scripture() // default constructor
     {
-        
     }
-    public Scripture(Reference Reference, string text) // constructor
+
+    public Scripture(Reference reference, string text) // constructor
     {
-        _reference = Reference;
+        _reference = reference;
         string[] pieces = text.Split(" "); // splits the string into individual words
-        foreach (string part in pieces)// turning each piece into a word object
+
+        foreach (string part in pieces) // turning each piece into a word object
         {
-            _words.Add(new Word(part)); 
+            _words.Add(new Word(part));
         }
     }
 
     public void HideRandomWords(int numberToHide)
     {
         Random rand = new Random(); // importing random generation
-        for (int i =0; i <numberToHide; i++)
-        {
-            List<Word> visibleWords = _words.Where(w => !w.IsHidden()).ToList();// Calling for a list of words that are not hidden
 
-            if(visibleWords.Count == 0) // if all words are hidden stop checking
+        for (int i = 0; i < numberToHide; i++)
+        {
+            // Calling for a list of words that are not hidden
+            List<Word> visibleWords = _words.Where(w => !w.IsHidden()).ToList();
+
+            if (visibleWords.Count == 0) // if all words are hidden stop checking
             {
                 break;
             }
-            else
-            {
-                int index = rand.Next(visibleWords.Count);
-                Word chosen = visibleWords[index]; // Deciding a random word to be hidden
-                chosen.Hide();
-            }
+
+            int index = rand.Next(visibleWords.Count);
+            Word chosen = visibleWords[index]; // Deciding a random word to be hidden
+            chosen.Hide();
         }
     }
 
@@ -46,6 +48,7 @@ public Scripture() // default contructor
         {
             wordTexts.Add(w.GetDisplayText());
         }
+
         string scriptureText = string.Join(" ", wordTexts);
         return $"{referenceText}\n{scriptureText}";
     }
@@ -54,23 +57,17 @@ public Scripture() // default contructor
     {
         foreach (Word w in _words)
         {
-            if (!w.IsHidden())// Plain English: Give me a word that is NOT hidden
+            if (!w.IsHidden()) // Plain English: Give me a word that is NOT hidden
             {
                 return false;
             }
-
         }
+
         return true;
     }
 
-
-
-
-
-
-
-
-
-
-
+    public string GetFullText()
+    {
+        return string.Join(" ", _words.Select(w => w.GetOriginalText()));
+    }
 }
