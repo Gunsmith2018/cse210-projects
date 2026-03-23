@@ -66,7 +66,7 @@ public class Scripture
         return true;
     }
 
-    public string GetFullText()
+    public string GetFullText() // added function for checking the user's work
     {
         return string.Join(" ", _words.Select(w => w.GetOriginalText()));
     }

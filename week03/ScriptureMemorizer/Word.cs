@@ -31,7 +31,7 @@ public class Word
             return _text;
         }
     }
-    public string GetOriginalText()
+    public string GetOriginalText() // added function for checking the user's work
     {
         return _text; 
     }
