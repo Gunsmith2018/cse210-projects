@@ -67,11 +67,14 @@ public class ReflectingActivity : Activity
             string question = GetRandomQuestion();// gives the user a question
             Console.WriteLine(question);
             ShowSpinner(15);
-            Console.WriteLine();
 
-            Console.WriteLine("Beguin typing: "); // user may beguin typing
-            Console.WriteLine("");
+            Console.WriteLine(); // buffer
+            Console.Clear();
+
+            Console.WriteLine("Beguin Typing:");
+            Console.WriteLine(); // The user is allowd to type without a spinner in the way.
             Console.ReadLine();
+
 
 
         } while (DateTime.Now < futureTime);

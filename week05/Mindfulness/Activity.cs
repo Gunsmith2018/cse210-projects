@@ -29,6 +29,7 @@ public class Activity
     public void DisplayEndingMessage()
     {
         Console.WriteLine($"You have completed {_name} within {_duration} seconds");
+        
     }
 
     public void ShowSpinner(int seconds)
@@ -52,7 +53,7 @@ public class Activity
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b \b \b");
+            Console.Write("\b\b \b\b");
         }
     }
 

@@ -51,10 +51,14 @@ public class ListingActivity  : Activity
 
 
         string prompt = GetRandomPrompt(); // Userinteraction
+        Console.WriteLine("You will have 15 seconds to ponder before typing.");
         Console.WriteLine($"Prompt: {prompt}");
-        Console.WriteLine("When you are ready, press enter. You will have 15 seconds to ponder.");
-        Console.ReadLine();
+
+
+        Console.WriteLine("Pondering...");
         ShowSpinner(15);
+        Console.WriteLine();
+        Console.WriteLine("START");
         Console.WriteLine();
 
         List<string> responses = GetListFromUser();
