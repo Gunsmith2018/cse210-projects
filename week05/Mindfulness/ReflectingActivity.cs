@@ -41,7 +41,8 @@ public class ReflectingActivity : Activity
     public void Run() // Run function to be called
     {
         DisplayStartingMessage();
-        Console.WriteLine(_description);
+
+        Console.WriteLine(_description); // The user should be setting the timer for x amount of seconds
         Console.WriteLine();
 
         Console.WriteLine("Get ready");
@@ -58,7 +59,8 @@ public class ReflectingActivity : Activity
         Console.WriteLine();
 
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration); // fills duration for when the activity should stop
+        DateTime startTime = DateTime.Now; // used for handling time effects
+        DateTime futureTime = startTime.AddSeconds(_duration);
 
         do
         {
@@ -72,7 +74,7 @@ public class ReflectingActivity : Activity
             Console.ReadLine();
 
 
-        } while (DateTime.Now < endTime);
+        } while (DateTime.Now < futureTime);
         Console.WriteLine("Time is up");
         DisplayEndingMessage();
         ShowSpinner(3);

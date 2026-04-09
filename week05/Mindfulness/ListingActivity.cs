@@ -23,7 +23,8 @@ public class ListingActivity  : Activity
     {
         List<string> user_list = new List<string>();
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration); // fills duration for when the activity should stop
+        DateTime startTime = DateTime.Now; // used for handling time effects
+        DateTime futureTime = startTime.AddSeconds(_duration);
 
         do // creating user list
         {
@@ -33,11 +34,12 @@ public class ListingActivity  : Activity
             {
                 user_list.Add(input);
             }
-        } while (DateTime.Now < endTime);
+        } while (DateTime.Now < futureTime);
 
         return user_list;
-    
+
     }
+    
     public void Run()
     {
         DisplayStartingMessage();
@@ -46,6 +48,7 @@ public class ListingActivity  : Activity
 
         Console.WriteLine("Get ready");
         ShowSpinner(3);
+
 
         string prompt = GetRandomPrompt(); // Userinteraction
         Console.WriteLine($"Prompt: {prompt}");

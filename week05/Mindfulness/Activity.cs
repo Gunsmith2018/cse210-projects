@@ -1,3 +1,4 @@
+using System;
 public class Activity
 {
     protected string _name;
@@ -13,12 +14,21 @@ public class Activity
 
     public void DisplayStartingMessage()
     {
-        Console.WriteLine("Welcome to the Mindfullness app");
+        Console.WriteLine($"Welcome to the {_name} Activity!");
+        Console.WriteLine(_description);
+        Console.WriteLine();
+
+        Console.Write("How long (in seconds) would you like this activity to last? ");
+        _duration = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Get ready...");
+        ShowSpinner(3);
     }
-    
+
+
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"You have completed {_name} within {_duration}");
+        Console.WriteLine($"You have completed {_name} within {_duration} seconds");
     }
 
     public void ShowSpinner(int seconds)
@@ -27,22 +37,22 @@ public class Activity
         DateTime endTime = DateTime.Now.AddSeconds(seconds);
         int index = 0;
 
-        while(DateTime.Now < endTime)
+        while (DateTime.Now < endTime)
         {
-            Console.Write(frames[index]);
-            Thread.Sleep(100);
-            Console.Write("\b");
+            Console.Write(" " + frames[index]);
+            Thread.Sleep(120);
+            Console.Write("\b\b");
             index = (index + 1) % frames.Length;
         }
     }
-    
+
     public void ShowCountDown(int seconds)
     {
-        for(int i = seconds; i > 0; i --)
+        for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
-            Thread.Sleep(100);
-            Console.Write("\b \b");
+            Thread.Sleep(1000);
+            Console.Write("\b \b \b \b");
         }
     }
 
