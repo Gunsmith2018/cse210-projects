@@ -13,12 +13,12 @@ class Program
         string choice;
         do
         {
-            Console.WriteLine("====================== Welcome to Mindulness APP (Main Menu)==========================");
+            Console.WriteLine("====================== Welcome to Mindfulness APP (Main Menu)==========================");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Listing Activity");
             Console.WriteLine("3. Reflecting Activity");
             Console.WriteLine("4. Quit");
-            Console.Write("Choose and option from 1-5");
+            Console.Write("Choose and option from 1-4");
 
   
             choice = Console.ReadLine();
