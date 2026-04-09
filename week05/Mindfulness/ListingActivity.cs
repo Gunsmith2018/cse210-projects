@@ -3,9 +3,9 @@ public class ListingActivity  : Activity
     private int _count;
     private List<string> _prompts;
 
-    public ListingActivity(string name, string description, int duration) : base(name, description, duration)
+    public ListingActivity(string name, string description, int duration) : base(name, description, duration)// constructor for both ReflectingActivity and calling Activity
     {
-        _prompts = new List<string>
+        _prompts = new List<string> // Prompts could be put in a library of its own 
         {
             "Think of a time when you helped someone in need.",
             "Recall a moment when you overcame a challenge.",
@@ -14,18 +14,18 @@ public class ListingActivity  : Activity
         };
     }
 
-    public string GetRandomPrompt()
+    public string GetRandomPrompt() // random prompt decider
     {
         Random rand = new Random();
         return _prompts[rand.Next(_prompts.Count)];
     }
-    public List<string> GetListFromUser()
+    public List<string> GetListFromUser() // creating a list from the user's inputs
     {
         List<string> user_list = new List<string>();
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime endTime = DateTime.Now.AddSeconds(_duration); // fills duration for when the activity should stop
 
-        do
+        do // creating user list
         {
             Console.Write(">");
             string input = Console.ReadLine();
@@ -47,7 +47,7 @@ public class ListingActivity  : Activity
         Console.WriteLine("Get ready");
         ShowSpinner(3);
 
-        string prompt = GetRandomPrompt();
+        string prompt = GetRandomPrompt(); // Userinteraction
         Console.WriteLine($"Prompt: {prompt}");
         Console.WriteLine("When you are ready, press enter. You will have 15 seconds to ponder.");
         Console.ReadLine();

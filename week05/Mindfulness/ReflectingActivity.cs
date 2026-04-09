@@ -3,9 +3,9 @@ public class ReflectingActivity : Activity
     private List<string> _prompts;
     private List<string> _questions;
 
-    public ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
+    public ReflectingActivity(string name, string description, int duration) : base(name, description, duration) // constructor for both ReflectingActivity and calling Activity
     {
-        _prompts = new List<string>
+        _prompts = new List<string> // Hard Coded prompts and questions. These could be in a library where the user can add more if wanted. 
         {
             "Think of a time when you helped someone in need.",
             "Recall a moment when you overcame a challenge.",
@@ -38,16 +38,16 @@ public class ReflectingActivity : Activity
 
 
 
-    public void Run()
+    public void Run() // Run function to be called
     {
         DisplayStartingMessage();
         Console.WriteLine(_description);
         Console.WriteLine();
 
         Console.WriteLine("Get ready");
-        ShowSpinner(3);
+        ShowSpinner(3); // Runs the spinner animation from activity class
 
-        string prompt = GetRandomPrompt();
+        string prompt = GetRandomPrompt();//gives the user a prompt
         Console.WriteLine($"Prompt: {prompt}");
         Console.WriteLine("When you are ready, press enter.");
         Console.ReadLine();
@@ -58,16 +58,16 @@ public class ReflectingActivity : Activity
         Console.WriteLine();
 
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime endTime = DateTime.Now.AddSeconds(_duration); // fills duration for when the activity should stop
 
         do
         {
-            string question = GetRandomQuestion();
+            string question = GetRandomQuestion();// gives the user a question
             Console.WriteLine(question);
             ShowSpinner(15);
             Console.WriteLine();
 
-            Console.WriteLine("Beguin typing: ");
+            Console.WriteLine("Beguin typing: "); // user may beguin typing
             Console.WriteLine("");
             Console.ReadLine();
 

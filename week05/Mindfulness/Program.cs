@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
 
+        // loading classes to be accessed
         BreathingActivity breathing = new BreathingActivity("Breating Activity", "This activity will help you with your breathing.", 0);
         ListingActivity listing = new ListingActivity("Listing Activity", "This activity you will be given a prompt then you will type", 0);
         ReflectingActivity reflecting = new ReflectingActivity("Reflecting Activity", "This activity will show you a prompt to start your thinking, then you will be given a question to write a reply.", 0);
@@ -22,7 +23,7 @@ class Program
   
             choice = Console.ReadLine();
 
-            switch (choice)
+            switch (choice) // used for having the options be usable
             {
                 case "1":
                     breathing.Run();
