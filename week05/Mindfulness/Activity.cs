@@ -1,7 +1,7 @@
 using System;
 public class Activity
 {
-    protected string _name;
+    private string _name;
     protected string _description;
     protected int _duration;
 
