@@ -23,7 +23,7 @@ public class GoalManager
         
     }
 
-    public void ListGOalDetails()
+    public void ListGoalDetails()
     {
         
     }
