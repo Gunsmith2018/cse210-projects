@@ -1,32 +1,29 @@
-public class Goal
+public abstract class Goal
 {
-    private string _shortname; 
+    protected string _shortName; 
     protected string _description;
     protected string _points;
 
     public Goal(string name, string description, string points)
     {
-        _shortname = name;
+        _shortName = name;
         _description = description;
         _points = points;
-    } 
+    }
 
 
+    public string GetName() // This is a helper for GoalManager to get GoalNames
+    {
+        return _shortName;
+    }
+    public string GetPoints() // Another helper for GoalManager 
+    {
+        return _points;
+    }
+    public abstract void RecordEvent();
+    public abstract bool IsComplete();
+    public abstract string GetDetailsString();
+    public abstract string GetStringRepresentation();
 
-    public void RecordEvent()
-    {
-        
-    }
-    public bool IsComplete()
-    {
-        return true;
-    }
-    public string GetDetailsString()
-    {
-        return;
-    }
-    public string GetStringRepresentation()
-    {
-        return;
-    }
+
 }
