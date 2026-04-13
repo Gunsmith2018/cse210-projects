@@ -13,6 +13,11 @@ public class EternalGoal : Goal
     {
         return false;
     }
+    public override string GetDetailsString()
+    {
+        
+        return $"{GetName()} ({GetDescription()})";
+    }
     public override string GetStringRepresentation()
     {
         return $"EternalGoal: {_shortName}|{_description}|{_points}|false";

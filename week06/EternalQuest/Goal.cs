@@ -11,19 +11,23 @@ public abstract class Goal
         _points = points;
     }
 
-
-    public string GetName() // This is a helper for GoalManager to get GoalNames
+    public string GetName()
     {
         return _shortName;
     }
-    public string GetPoints() // Another helper for GoalManager 
+
+    public string GetPoints()
     {
         return _points;
     }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
     public abstract void RecordEvent();
     public abstract bool IsComplete();
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();
-
-
 }
