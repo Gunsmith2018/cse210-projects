@@ -200,69 +200,69 @@ public class GoalManager
     }
     public void LoadGoals(string file) //loading method
     {
-if (!File.Exists(file))
-    {
-        Console.WriteLine("File not found.");
-        return;
-    }
-
-    string[] lines = File.ReadAllLines(file);
-
-    _goals.Clear();
-
-    if (lines.Length == 0)
-    {
-        Console.WriteLine("File is empty.");
-        return;
-    }
-
-    // First line is the score
-    _score = int.Parse(lines[0]);
-
-    // Remaining lines are goals
-    for (int i = 1; i < lines.Length; i++)
-    {
-        string line = lines[i];
-        string[] parts = line.Split(':');      // Type : data
-        string type = parts[0];
-        string[] data = parts[1].Split(',');   // fields
-
-        if (type == "SimpleGoal")
-        {
-            string name = data[0];
-            string description = data[1];
-            string points = data[2];
-            bool isComplete = bool.Parse(data[3]);
-
-            SimpleGoal g = new SimpleGoal(name, description, points);
-            if (isComplete)
+        if (!File.Exists(file))
             {
-                g.RecordEvent(); // or set a property if you have one
+                Console.WriteLine("File not found.");
+                return;
             }
-            _goals.Add(g);
-        }
-        else if (type == "EternalGoal")
-        {
-            string name = data[0];
-            string description = data[1];
-            string points = data[2];
 
-            EternalGoal g = new EternalGoal(name, description, points);
-            _goals.Add(g);
-        }
-        else if (type == "ChecklistGoal")
-        {
-            string name = data[0];
-            string description = data[1];
-            string points = data[2];
-            int amountCompleted = int.Parse(data[3]);
-            int target = int.Parse(data[4]);
-            int bonus = int.Parse(data[5]);
+            string[] lines = File.ReadAllLines(file);
 
-            ChecklistGoal g = new ChecklistGoal(name, description, points, amountCompleted, target, bonus);
-            _goals.Add(g);
-        }
-    }
+            _goals.Clear();
+
+            if (lines.Length == 0)
+            {
+                Console.WriteLine("File is empty.");
+                return;
+            }
+
+            // First line is the score
+            _score = int.Parse(lines[0]);
+
+            // Remaining lines are goals
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                string[] parts = line.Split(':');      // Type : data
+                string type = parts[0];
+                string[] data = parts[1].Split(',');   // fields
+
+                if (type == "SimpleGoal")
+                {
+                    string name = data[0];
+                    string description = data[1];
+                    string points = data[2];
+                    bool isComplete = bool.Parse(data[3]);
+
+                    SimpleGoal g = new SimpleGoal(name, description, points);
+                    if (isComplete)
+                    {
+                        g.RecordEvent(); // or set a property if you have one
+                    }
+                    _goals.Add(g);
+                }
+                else if (type == "EternalGoal")
+                {
+                    string name = data[0];
+                    string description = data[1];
+                    string points = data[2];
+
+                    EternalGoal g = new EternalGoal(name, description, points);
+                    _goals.Add(g);
+                }
+                else if (type == "ChecklistGoal")
+                {
+                    string name = data[0];
+                    string description = data[1];
+                    string points = data[2];
+                    int amountCompleted = int.Parse(data[3]);
+                    int target = int.Parse(data[4]);
+                    int bonus = int.Parse(data[5]);
+
+                    ChecklistGoal g = new ChecklistGoal(name, description, points, amountCompleted, target, bonus);
+                    _goals.Add(g);
+                }
+            }
 
     Console.WriteLine("Goals loaded successfully.");
 }
